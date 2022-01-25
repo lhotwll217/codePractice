@@ -157,7 +157,7 @@ function countUniqueValues(arr) {
       arr[left] = arr[right];
       right++;
     }
-    console.log(arr);
+    // console.log(arr);
   }
 
   return left + 1;
@@ -269,7 +269,7 @@ function findOdds(arr) {
 
 const oddArray = [1, 33, 5, 2, 78, 23, 7, 3];
 
-console.log(collectOdds(oddArray));
+// console.log(collectOdds(oddArray));
 
 function power(base, exp) {
   while (exp > 0) {
@@ -351,7 +351,7 @@ function binarySearch2(arr, val) {
   }
 }
 
-console.log("recbin", recursiveBinary([1, 2, 3, 4, 5, 6], 6));
+// console.log("recbin", recursiveBinarySearch2([1, 2, 3, 4, 5, 6], 6));
 
 function recursiveBinarySearch(n, arr) {
   let mid = Math.floor(arr.length / 2);
@@ -398,4 +398,60 @@ function naiveString(long, short) {
     }
   }
   return count;
+}
+
+// JavaScript built in sort
+
+function numberCompare(num1, num2) {
+  return num1 - num2;
+}
+
+[6, 4, 23, 65].sort(numberCompare);
+
+//Bubble Sort
+
+// Luke's try
+function bubbleSort(arr) {
+  //Declaring a no swaps variable to monitor if we are changing the array through every top level iteration. If the swap function does not run, we know the array has not changed and no more sorting is required.
+  let noSwaps;
+
+  function swap(arr, indx1, indx2) {
+    let temp = arr[indx1];
+    arr[indx1] = arr[indx2];
+    arr[indx2] = temp;
+    noSwaps = false;
+  }
+
+  //Starts from the end of the array
+  for (let i = arr.length; i > 0; i--) {
+    noSwaps = true;
+    // By creating a condition that compares j to i we prevent it from being ran through already sorted elements.
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+      }
+    }
+    if (noSwaps) break;
+  }
+  return arr;
+}
+console.log(bubbleSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
+
+//Naive - simply using the length and starting the array from beginning causes this sort to rerun over previously sorted numbers.
+
+function naiveBubble(arr) {
+  //This makes sure it is done as many times as there are elements
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr.length; j++) {
+      console.log(arr);
+      if (arr[j] > arr[j + 1]) {
+        //Create a temp to save the greater value in a variable before reassigning it.
+        var temp = arr[j];
+        //Reassign the greater element to the next index
+        arr[j] = arr[j + 1];
+        // Move the lesser element to the index before
+        arr[j + 1] = temp;
+      }
+    }
+  }
 }
