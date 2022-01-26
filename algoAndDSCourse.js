@@ -480,3 +480,26 @@ function selectionSort(arr) {
   return arr;
 }
 console.log(selectionSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
+
+//InsertionShort
+
+function insertionSort(arr) {
+  for (i = 1; i < arr.length; i++) {
+    let currentVal = arr[i];
+    //If currentVal is greater than arr[j] we want to break out of the nested loop and define the index after j as the current val. If we reach the end of the loop it was the lowest number compared in the iteration and gets placed at index 0.
+    for (j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+      //This moves the value of j forward an idex as the currentVal looks for either a number that is smaller to be inserted after or the end of the loop
+      arr[j + 1] = arr[j];
+    }
+    //If arr[j] is less than currentVal or we run the loop which means j=-1 and it begins the array.
+    arr[j + 1] = currentVal;
+  }
+
+  return arr;
+}
+
+[2, 1, 3];
+
+i = 1;
+currentVal = 1;
+j = 0;
