@@ -435,7 +435,7 @@ function bubbleSort(arr) {
   }
   return arr;
 }
-console.log(bubbleSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
+// console.log(bubbleSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
 
 //Naive - simply using the length and starting the array from beginning causes this sort to rerun over previously sorted numbers.
 
@@ -443,7 +443,7 @@ function naiveBubble(arr) {
   //This makes sure it is done as many times as there are elements
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < arr.length; j++) {
-      console.log(arr);
+      // console.log(arr);
       if (arr[j] > arr[j + 1]) {
         //Create a temp to save the greater value in a variable before reassigning it.
         var temp = arr[j];
@@ -455,3 +455,28 @@ function naiveBubble(arr) {
     }
   }
 }
+
+//Selection Sort
+
+function selectionSort(arr) {
+  function swap(arr, indx1, indx2) {
+    let temp = arr[indx1];
+    arr[indx1] = arr[indx2];
+    arr[indx2] = temp;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    let min = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        //Don't use the value, but the index so we can use it to reassign.
+        min = j;
+      }
+    }
+    if (min !== i) {
+      swap(arr, min, i);
+    }
+  }
+  return arr;
+}
+console.log(selectionSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
