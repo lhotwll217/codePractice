@@ -479,7 +479,7 @@ function selectionSort(arr) {
   }
   return arr;
 }
-console.log(selectionSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
+// console.log(selectionSort([1, 3, 4, 7, 5, 98, 4, 32, 6]));
 
 //InsertionShort
 
@@ -503,3 +503,88 @@ function insertionSort(arr) {
 i = 1;
 currentVal = 1;
 j = 0;
+
+//Merge Sort
+//Merge Function
+//Luke's Attempt
+function merge(arr1, arr2) {
+  let mergedArr = [];
+  let i1 = 0;
+  let i2 = 0;
+
+  while (mergedArr.length < arr1.length + arr2.length) {
+    if (arr1[i1] < arr2[i2]) {
+      mergedArr.push(arr1.slice(i1, i1 + 1));
+      i1 = i1 + 1;
+    }
+    if (arr2[i2] <= arr1[i1]) {
+      mergedArr.push(arr2.slice(i2, i2 + 1));
+      i2 = i2 + 1;
+    }
+    if (arr1[i1] === arr2[i2]) {
+      let dupArray = [arr1[i1], arr2[i2]];
+      mergedArr.push(dupArray);
+      i1 = i1 + 1;
+      i2 = i2 + 1;
+    }
+  }
+  return mergedArr;
+}
+
+console.log(merge2([1, 3, 5], [2, 4, 6]));
+
+//Udemy Merge
+
+function merge2(arr1, arr2) {
+  let results = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr2[j] > arr1[i]) {
+      results.push(arr1[i]);
+      i++;
+    } else {
+      results.push(arr2[j]);
+      j++;
+    }
+  }
+
+  while (i < arr1.length) {
+    results.push(arr1[i]);
+    i++;
+  }
+  while (j < arr2.length) {
+    results.push(arr2[j]);
+    j++;
+  }
+
+  return results;
+}
+
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  let mid = Math.floor(array.length / 2);
+  let left = mergeSort(arr.slice(0, mid));
+  let right = mergeSort(arr.slice(mid));
+  return merge(left, right);
+}
+
+function reversedString(str) {
+  let split = str.split(" ");
+
+  let reversedArray = [];
+  split.forEach((e) => {
+    let reversedWord = [];
+    for (char of e) {
+      console.log(char);
+      reversedWord.unshift(char);
+    }
+    reversedArray.push(reversedWord.join(""));
+  });
+
+  return reversedArray.join(" ");
+}
+
+console.log(reversedString("hello world"));
